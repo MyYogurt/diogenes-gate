@@ -6,7 +6,7 @@ unity version version:
 modules added:
      - Windows Build Support (IL2CPP)
 
-[the entire project folder is being pushed]
+[the entire project folder is being pushed but the gitignore filters]
 
 Note: i create a folder for this project locally, inside that folder created a (2D) project and name it Gate.
 this way when you pull it should go to the correct spot (will do my own testing to check)
