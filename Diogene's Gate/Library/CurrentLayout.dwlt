@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 398}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 348}
   m_MaxSize: {x: 12008, y: 8048}
   vertical: 0
-  controlID: 121
+  controlID: 81
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 348}
   m_MaxSize: {x: 8006, y: 8048}
   vertical: 1
-  controlID: 85
+  controlID: 82
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 86
+  controlID: 83
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -17360
+  m_LastSelectedObjectID: 4552
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -432,21 +432,21 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/Data/Items
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/Data/Items
   m_LastFoldersGridSize: -1
   m_LastProjectPath: A:\OneDrive - University of Pittsburgh\school\Spring 2022\Software
     Engineering\game\diogenes-gate\Diogene's Gate
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: f80c0000
-    m_LastClickedID: 3320
-    m_ExpandedIDs: 00000000ec0900003a0b00006e0b0000f80c00000a0d00003c0d00009e32000060340000d434000016350000463500005c35000066350000a0350000a4350000a6350000a835000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 14}
+    m_SelectedIDs: 420d0000
+    m_LastClickedID: 3394
+    m_ExpandedIDs: 00000000ee090000d40a0000840b0000bc0b0000c00d0000d00d0000040e0000882f00008a2f00008c2f00008e2f0000902f0000922f0000942f0000962f0000982f00009a2f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -474,7 +474,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec0900005a0a00006e0b0000f80c00000a0d00003c0d0000
+    m_ExpandedIDs: 00000000ee090000d40a0000840b0000bc0b0000c00d0000d00d0000040e0000882f00008a2f00008c2f00008e2f0000902f0000922f0000942f0000962f0000982f00009a2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -499,8 +499,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c427ffff
-    m_LastClickedInstanceID: -55356
+    m_SelectedInstanceIDs: 1e120000
+    m_LastClickedInstanceID: 4638
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300004a2b0000662a0000443200006a32000060320000a432000000000000
     m_RenameOverlay:
@@ -593,23 +593,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 501bffff9c1bffff4a1cffff0a27ffffca27ffff082affff623effff747affffe8a9ffff56aaffffb6aaffff16abffff78abffff04b0ffff10b1ffffc2bbffff48bcffff7ebcffff64bdffff9abeffffe6caffffeccaffff3edeffffdefbffff
+      m_SelectedIDs: c8110000
+      m_LastClickedID: 4552
+      m_ExpandedIDs: acecffff9ef0ffffdefbffff180f00003e0f0000f40f000092110000ba110000c411000050120000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Button (6)
-        m_OriginalName: Button (6)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -72062
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -650,9 +650,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 585.39087, y: 411.7237, z: -28.555744}
+    m_Target: {x: 729.5, y: 403.5, z: 0}
     speed: 2
-    m_Value: {x: 585.39087, y: 411.7237, z: -28.555744}
+    m_Value: {x: 729.5, y: 403.5, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -684,9 +684,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1097.305
+    m_Target: 1277.017
     speed: 2
-    m_Value: 1097.305
+    m_Value: 1277.017
   m_Ortho:
     m_Target: 1
     speed: 2

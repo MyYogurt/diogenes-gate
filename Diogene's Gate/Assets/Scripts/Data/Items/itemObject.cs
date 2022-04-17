@@ -16,6 +16,7 @@ public class itemObject
 
     public bool Equals(itemObject other)
     {
+        
         if (other == null)
         {
             return false;

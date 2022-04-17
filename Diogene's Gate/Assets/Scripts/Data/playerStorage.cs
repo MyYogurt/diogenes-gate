@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 [System.Serializable]
 public class playerStorage 
@@ -53,9 +54,11 @@ public class playerStorage
         {
             return;
         }
-        if (inventory.Contains(item))
+        Debug.Log(item.itemName);
+        itemObject find = inventory.FirstOrDefault(x => x.itemName == item.itemName);
+        if (find!=null)
         {
-            inventory.Find(a => inventory.Contains(item)).number=+1;
+            find.number = +1;
         }
         else
         {
@@ -68,13 +71,21 @@ public class playerStorage
         {
             return;
         }
-        if (inventory.Contains(item))
+        itemObject find = inventory.FirstOrDefault(x => x.itemName == item.itemName);
+        if (find != null)
         {
-            inventory.Find(a => inventory.Contains(item)).number = -1;
-            if (inventory.Find(a => inventory.Contains(item)).number == 0)
+            find.number = -1;
+            if (find.number == 0)
             {
                 inventory.Remove(item);
             }
         }
+    }
+    public itemObject invMem(int i)
+    {
+        if (inventory != null && i < inventory.Count)
+            return inventory[i];
+        else
+            return null;
     }
 }

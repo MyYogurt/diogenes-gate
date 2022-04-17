@@ -9,6 +9,7 @@ public class inventoryManager : MonoBehaviour
     // Start is called before the first frame update
     public int window;
     public int selected;
+    public int item;
     GameObject partyWindow;
     GameObject inventoryWindow;
 
@@ -18,10 +19,10 @@ public class inventoryManager : MonoBehaviour
         window = 0;
         partyWindow = GameObject.Find("party");
         inventoryWindow = GameObject.Find("inventory");
-        set();      
+        setParty();      
     }
 
-    public void set()
+    public void setParty()
     {
         GameController curr = GameController.getInstance();
         int j = 0;
@@ -86,12 +87,35 @@ public class inventoryManager : MonoBehaviour
     }
 
 
+    public void setInven()
+    {
+        GameController curr = GameController.getInstance();
 
+        GameObject originalGameObject = GameObject.Find("inventory");
+        int j = 0;
+        while (j < 7)
+        {
+            itemObject temp = curr.playerDetails.invMem(j);
+            GameObject child = originalGameObject.transform.Find("slots").transform.GetChild(j).gameObject;
+
+            if (temp != null)
+            {
+                child.GetComponentInChildren<TextMeshProUGUI>().text = temp.itemName;
+            }
+            else
+            {
+                child.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+
+            j++;
+        }
+
+    }
 
     public void onNameClick(int a)
     {
         selected = a;
-        set();
+        setParty();
     }
 
     public void onSwapClick(int a)
@@ -103,13 +127,14 @@ public class inventoryManager : MonoBehaviour
         {
            partyWindow.SetActive(false);
            inventoryWindow.SetActive(true);
+           setInven();
         }
         else
         {
 
             partyWindow.SetActive(true);
             inventoryWindow.SetActive(false);
-
+            setParty();
         }
  
     }
@@ -123,23 +148,79 @@ public class inventoryManager : MonoBehaviour
         {
             itemObject remove = temp.armor[a];
             temp.armor[a] = null;
-            Debug.Log(remove.itemName);
             curr.playerDetails.addItem(remove);
 
         }
-        set();
+        setParty();
     }
 
     public void onInvClick(int a)
     {
         GameController curr = GameController.getInstance();
-        GameObject originalGameObject = GameObject.Find("charDesc");
-        pcObject temp = curr.playerDetails.partyMem(a);
+
+        itemObject temp = curr.playerDetails.invMem(a);
+
+        GameObject originalGameObject = GameObject.Find("inventory");
+        GameObject child = originalGameObject.transform.Find("useMenu").transform.Find("Dropdown").gameObject;
+        child.GetComponentInChildren<TMP_Dropdown>().ClearOptions();
+        int j = 0;
+        List<string> L= new List<string>();
+        while (j < 6)
+        {
+            pcObject pc = curr.playerDetails.partyMem(j);
+            if (pc!=null)
+            {
+                string cha = pc.pcName;
+                L.Add(cha);
+            }
+            j++;
+        }
+        child.GetComponentInChildren<TMP_Dropdown>().AddOptions(L);
+
+
+
+        child = originalGameObject.transform.Find("useMenu").transform.Find("description").gameObject;
         if (temp != null)
         {
-            string output = "Class:" + "\nName: " + temp.pcName + "\nDefense: " + temp.dodge + "\nHealth: " + temp.health + "\nMana: " + temp.mana;
-            originalGameObject.GetComponentInChildren<TextMeshProUGUI>().text = output;
+            string s;
+            if(temp.type==4)//heal
+            {
+                s ="\nHeals: " + temp.value;
+            }
+            else if (temp.type == 3)//mana
+            {
+                s = "\nMana gained: " + temp.value;
+            }
+            else if(temp.type ==1 || temp.type == 2)//defense
+            {
+                s = "\nDefense: " + temp.value;
+            }
+            else
+            {
+                s = "\nDamage: " + temp.value;
+            }
+            string output = "Name: " + temp.itemName + "\nConsumable: " + temp.destroyOnUse + s + "\ncarried: " + temp.number;
+            child.GetComponentInChildren<TextMeshProUGUI>().text = output;
+
         }
+        child = originalGameObject.transform.Find("useMenu").gameObject;
+        child.transform.position = new Vector3(703, 401, 0);
+
+
+
+    }
+
+    public void onUseClick(int a)
+    {
+        GameObject originalGameObject = GameObject.Find("inventory");
+        GameObject child = originalGameObject.transform.Find("useMenu").transform.Find("Dropdown").gameObject;
+        if (a==0)
+        {
+
+        }
+
+        child = originalGameObject.transform.Find("useMenu").gameObject;
+        child.transform.position = new Vector3(-420, 200, 0);
     }
 
 }

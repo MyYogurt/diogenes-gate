@@ -13,21 +13,21 @@
         "itemName": "pen",
         "destroyOnUse": true,
         "value": 1,
-        "type": 1,
+        "type": 0,
         "number": 1
         },
         {
-        "itemName": "pen1",
+        "itemName": "bucket",
         "destroyOnUse": true,
         "value": 1,
         "type": 1,
         "number": 1
         },
         {
-        "itemName": "pen2",
+        "itemName": "vest",
         "destroyOnUse": true,
         "value": 1,
-        "type": 1,
+        "type": 2,
         "number": 1
         }
     ],
@@ -45,10 +45,17 @@
   "inventory": 
   [
     {
-      "itemName": "pen",
+      "itemName": "gatorade",
       "destroyOnUse": true,
       "value": 1,
-      "type": 1,
+      "type": 3,
+      "number": 1
+    },
+    {
+      "itemName": "juice",
+      "destroyOnUse": true,
+      "value": 1,
+      "type": 4,
       "number": 1
     }
   ]
