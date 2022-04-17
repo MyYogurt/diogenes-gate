@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class worldStorage : MonoBehaviour
+[System.Serializable]
+public class worldStorage
 {
-    // Start is called before the first frame update
-    void Start()
+    public int loc; //pre determind spawn locations (changes every time we change scenes)
+    public List<monsterObject> monsterList;
+    public List<itemObject> itemsList;
+    public List<pcObject> npclist;
+
+    public worldStorage()
     {
-        
+        loc = 0;
+        monsterList = new List<monsterObject>();
+        itemsList = new List<itemObject>();
+        npclist = new List<pcObject>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

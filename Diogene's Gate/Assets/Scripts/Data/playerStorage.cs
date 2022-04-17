@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-public class playerStorage : MonoBehaviour
+[System.Serializable]
+public class playerStorage 
 {
-    private List<pcObject> Party = new List<pcObject>();
-    private List<itemObject> inventory = new List<itemObject>();
+    public List<pcObject> Party;
+    public List<itemObject> inventory;
 
-    public void preLoad() // start game pass in a storage device
+    public playerStorage()
     {
-
+        Party = new List<pcObject>();
+        inventory = new List<itemObject>();
     }
 
 
@@ -30,7 +33,17 @@ public class playerStorage : MonoBehaviour
         Party[slot1] = Party[slot2];
         Party[slot2] = temp;
     }
-
+    public int partySize()
+    {
+        return Party.Count;
+    }
+    public pcObject partyMem(int i)
+    {
+        if (Party!=null && i < partySize())
+            return Party[i];
+        else
+            return null;
+    }
 
 
     //inventory management

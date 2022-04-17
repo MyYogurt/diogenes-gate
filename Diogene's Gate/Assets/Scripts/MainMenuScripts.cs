@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScripts : MonoBehaviour
+public class MainMenuScripts
 {
     // Start is called before the first frame update
     public void newGame()
     {
         //need to figure out instance
         GameController newgame = GameController.getInstance();
-        newgame.playerDetails.addParty((pcObject)AssetDatabase.LoadAssetAtPath("Assets/Scripts/Data/Players/main character.asset", typeof(pcObject)));
 
         // then load town with the scene change
         //      SceneManager.LoadScene();
@@ -19,6 +18,7 @@ public class MainMenuScripts : MonoBehaviour
 
     public void loadGame()
     {
+        GameController newgame = GameController.loadInstance();
         //need to figure out instance
     }
 

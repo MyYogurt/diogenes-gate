@@ -1,0 +1,30 @@
+{
+  "Party":
+  [
+    {
+      "pcName": "doug",
+      "dodge": 3,
+      "health": 4,
+      "mana": 5,
+      "skills": 
+      [
+        {
+          "hits": 3,
+          "chance": 4,
+          "damage": 5,
+          "cost": 5
+        }
+      ]
+    }
+  ],
+  "inventory": 
+  [
+    {
+      "itemName": "pen",
+      "itemName": true,
+      "itemName": 1,
+      "itemName": 1,
+      "itemName": 1
+    }
+  ]
+}

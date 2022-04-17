@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "skill Card", menuName = "new skill")]
-public class skillObject : ScriptableObject
+public class skillObject
 {
 
     public int hits;

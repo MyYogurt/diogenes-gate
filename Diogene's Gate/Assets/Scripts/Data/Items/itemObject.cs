@@ -5,14 +5,14 @@ using UnityEngine;
 
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "item Card",menuName ="new Item")]
-public class itemObject : ScriptableObject
+public class itemObject
 {
     public string itemName;               //    name
     public bool destroyOnUse;             //    Examples of additional information that could be held in InventoryItem
     public int value;                     //    Tied to how much defense, offense, etc is provided
     public int type;
     public int number;
+
 
     public bool Equals(itemObject other)
     {

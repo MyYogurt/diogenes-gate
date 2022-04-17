@@ -4,8 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "monster Card", menuName = "new Monster")]
-public class monsterObject : ScriptableObject
+public class monsterObject
 {
     // Start is called before the first frame update
     public string monsterName;       
@@ -13,6 +12,16 @@ public class monsterObject : ScriptableObject
     public int health;
     public int damage;
     public int numAttacks;
+
+
+    public monsterObject()
+    {
+        monsterName = "slime";
+        dodge = 3;
+        health= 4;
+        damage = 5;
+        numAttacks= 1;
+    }
 
     public bool Equals(monsterObject other)
     {
