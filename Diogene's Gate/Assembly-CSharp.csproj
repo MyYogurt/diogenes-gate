@@ -64,12 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BattleController.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Data\interactables\chest.cs" />
     <Compile Include="Assets\Scripts\Data\Items\itemObject.cs" />
     <Compile Include="Assets\Scripts\Data\Monsters\monsterObject.cs" />
     <Compile Include="Assets\Scripts\Data\Players\pcObject.cs" />
     <Compile Include="Assets\Scripts\Data\Players\skills\skillObject.cs" />
+    <Compile Include="Assets\Scripts\Data\Players\walker.cs" />
     <Compile Include="Assets\Scripts\Data\playerStorage.cs" />
     <Compile Include="Assets\Scripts\Data\worldStorage.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
@@ -114,7 +116,6 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Artwork\Sprites\temps\rpg-tutorial-assets\README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Scripts\Data\json\loadParty.txt" />
     <None Include="Assets\Artwork\Sprites\temps\character\FreeDemo\Readme.txt" />
@@ -126,14 +127,17 @@
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Artwork\Sprites\temps\character\FreeDemo\HowToUseThis.txt" />
+    <None Include="Assets\Artwork\Sprites\temps\New folder\Package_Marketplace\LICENCE.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Artwork\Sprites\temps\New folder\Package\README.txt" />
     <None Include="Assets\Scripts\Data\json\newWorld.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Artwork\Sprites\temps\New folder\Package_Marketplace\README.txt" />
     <None Include="Assets\Artwork\Sprites\temps\character\Terms of Use (MZ Heroes).txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />

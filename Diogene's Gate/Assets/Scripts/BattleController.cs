@@ -17,7 +17,7 @@ public class BattleController : MonoBehaviour
     void startBattle()
     {
         turn = 0;
-        subTurn = 0;
+        subturn = 0;
         enemyType = Random.Range(0, 3);
         animator.SetInteger("enemyType", enemyType);
         inBattleScene = true;

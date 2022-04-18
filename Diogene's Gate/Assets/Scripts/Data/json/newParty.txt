@@ -5,9 +5,9 @@
       "pcName": "doug",
       "dodge": 3,
       "health": 4,
-      "healthLeft": 4,
+      "healthLeft": 3,
       "mana": 5,
-      "manaLeft": 5,
+      "manaLeft": 3,
       "armor":[
         {
         "itemName": "pen",
@@ -34,6 +34,7 @@
       "skills": 
       [
         {
+          "name":"slash",
           "hits": 3,
           "chance": 4,
           "damage": 5,

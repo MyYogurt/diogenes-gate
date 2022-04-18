@@ -22,11 +22,12 @@ public class playerStorage
     // first 3 are the active party
     public void addParty(pcObject newMem)
     {
-        if(Party.Contains(newMem))
+        pcObject find = Party.FirstOrDefault(x => x.pcName == newMem.pcName);
+        if (find != null)
         {
-            return;
+            Party.Add(newMem);
         }
-        Party.Add(newMem);
+        return;
     }
     public void swapParty(int slot1, int slot2)
     {
@@ -40,11 +41,21 @@ public class playerStorage
     }
     public pcObject partyMem(int i)
     {
-        if (Party!=null && i < partySize())
+        if (i!=-1 && Party!=null && i < partySize())
             return Party[i];
         else
             return null;
     }
+    public pcObject partyMem(string i)
+    {
+        pcObject find = Party.FirstOrDefault(x => x.pcName == i);
+        if (find != null)
+        {
+            return find;
+        }
+        return null;
+    }
+
 
 
     //inventory management
@@ -58,10 +69,11 @@ public class playerStorage
         itemObject find = inventory.FirstOrDefault(x => x.itemName == item.itemName);
         if (find!=null)
         {
-            find.number = +1;
+            find.number += 1;
         }
         else
         {
+            item.number = 1;
             inventory.Add(item);
         }
     }
@@ -74,7 +86,7 @@ public class playerStorage
         itemObject find = inventory.FirstOrDefault(x => x.itemName == item.itemName);
         if (find != null)
         {
-            find.number = -1;
+            find.number -= 1;
             if (find.number == 0)
             {
                 inventory.Remove(item);

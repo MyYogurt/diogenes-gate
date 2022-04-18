@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class inventoryManager : MonoBehaviour
@@ -50,13 +51,13 @@ public class inventoryManager : MonoBehaviour
             pcObject temp = curr.playerDetails.partyMem(selected);
             if (temp != null)
             {
-                string output = "Class:" + "\nName: " + temp.pcName + "\nDefense: " + temp.dodge + "\nHealth:    " + temp.health + "\nMana:     " + temp.mana;
+                string output = "Class:" + "\nName: " + temp.pcName + "\nDefense: " + temp.dodge + "\nHealth: " + +temp.healthLeft + "/"+temp.health + "\nMana:" +temp.manaLeft+"/"+ temp.mana;
                 originalGameObject.GetComponentInChildren<TextMeshProUGUI>().text = output;
 
                 GameObject child = originalGameObject.transform.Find("helm").gameObject;
-                if (temp.armor[0] != null)
+                if (temp.armor[1] != null)
                 {
-                    child.GetComponentInChildren<TextMeshProUGUI>().text = temp.armor[0].itemName;
+                    child.GetComponentInChildren<TextMeshProUGUI>().text = temp.armor[1].itemName;
                 }
                 else
                 {
@@ -64,9 +65,9 @@ public class inventoryManager : MonoBehaviour
                 }
 
                 child = originalGameObject.transform.Find("weapon").gameObject;
-                if (temp.armor[1] != null)
+                if (temp.armor[0] != null)
                 {
-                    child.GetComponentInChildren<TextMeshProUGUI>().text = temp.armor[1].itemName;
+                    child.GetComponentInChildren<TextMeshProUGUI>().text = temp.armor[0].itemName;
                 }
                 else
                 {
@@ -149,7 +150,6 @@ public class inventoryManager : MonoBehaviour
             itemObject remove = temp.armor[a];
             temp.armor[a] = null;
             curr.playerDetails.addItem(remove);
-
         }
         setParty();
     }
@@ -157,7 +157,7 @@ public class inventoryManager : MonoBehaviour
     public void onInvClick(int a)
     {
         GameController curr = GameController.getInstance();
-
+        item = a;
         itemObject temp = curr.playerDetails.invMem(a);
 
         GameObject originalGameObject = GameObject.Find("inventory");
@@ -201,10 +201,16 @@ public class inventoryManager : MonoBehaviour
             }
             string output = "Name: " + temp.itemName + "\nConsumable: " + temp.destroyOnUse + s + "\ncarried: " + temp.number;
             child.GetComponentInChildren<TextMeshProUGUI>().text = output;
-
+            child = originalGameObject.transform.Find("useMenu").gameObject;
+            child.transform.position = new Vector3(987, 530, 0);
         }
-        child = originalGameObject.transform.Find("useMenu").gameObject;
-        child.transform.position = new Vector3(703, 401, 0);
+        else
+        {
+            child.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            child = originalGameObject.transform.Find("useMenu").gameObject;
+            child.transform.position = new Vector3(-429, 200, 0);
+            setInven();
+        }
 
 
 
@@ -213,14 +219,62 @@ public class inventoryManager : MonoBehaviour
     public void onUseClick(int a)
     {
         GameObject originalGameObject = GameObject.Find("inventory");
-        GameObject child = originalGameObject.transform.Find("useMenu").transform.Find("Dropdown").gameObject;
+        GameObject child = originalGameObject.transform.Find("useMenu").transform.Find("Dropdown").transform.Find("Label").gameObject;
+        GameController curr = GameController.getInstance();
+        itemObject currItem = curr.playerDetails.invMem(item);
+        pcObject selectedPC = curr.playerDetails.partyMem(child.GetComponentInChildren<TextMeshProUGUI>().text);
         if (a==0)
         {
-
+            if (currItem.type == 0)     //damage
+            {
+                if (selectedPC.armor[0]!=null)
+                {
+                    curr.playerDetails.addItem(selectedPC.armor[0]);
+                }
+                selectedPC.armor[0] = currItem;
+                curr.playerDetails.removeItem(currItem);
+            }
+            else if (currItem.type == 1)//head
+            {
+                if (selectedPC.armor[1] != null)
+                {
+                    curr.playerDetails.addItem(selectedPC.armor[0]);
+                }
+                selectedPC.armor[1] = currItem;
+                curr.playerDetails.removeItem(currItem);
+            }
+            else if (currItem.type == 2)//chest
+            {
+                if (selectedPC.armor[2] != null)
+                {
+                    curr.playerDetails.addItem(selectedPC.armor[0]);
+                }
+                selectedPC.armor[2] = currItem;
+                curr.playerDetails.removeItem(currItem);
+            }
+            else if (currItem.type == 3)//mana
+            {
+                selectedPC.manaLeft += currItem.value;
+                if(selectedPC.manaLeft> selectedPC.mana)
+                {
+                    selectedPC.manaLeft = selectedPC.mana;
+                }
+                curr.playerDetails.removeItem(currItem);
+            }
+            else //heal
+            {
+                selectedPC.healthLeft += currItem.value;
+                if (selectedPC.healthLeft > selectedPC.health)
+                {
+                    selectedPC.healthLeft = selectedPC.health;
+                }
+                curr.playerDetails.removeItem(currItem);
+            }
         }
 
         child = originalGameObject.transform.Find("useMenu").gameObject;
-        child.transform.position = new Vector3(-420, 200, 0);
+        child.transform.position = new Vector3(-429, 200, 0);
+        setInven();
     }
 
 }

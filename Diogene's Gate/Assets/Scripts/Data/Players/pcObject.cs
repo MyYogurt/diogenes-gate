@@ -13,7 +13,7 @@ public class pcObject
     public int healthLeft;
     public int mana;
     public int manaLeft;
-    public itemObject[] armor;
+    public itemObject[] armor; //0 hand, 1 head, 2 body
     public List<skillObject> skills;
 
     public pcObject()
