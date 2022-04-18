@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class walker : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class walker : MonoBehaviour
     {
         Anima = GetComponent<Animator>();
         state = 0;
+        GameController curr = GameController.getInstance();
+        transform.position = curr.worldDetails.lastPosition;
     }
 
     // Update is called once per frame

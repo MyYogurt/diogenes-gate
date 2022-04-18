@@ -1,5 +1,4 @@
 {
-  "loc":0,
   "monsterList":
   [
     {
@@ -29,7 +28,7 @@
       "health": 4,
       "damage": 5,
       "numAttacks": 1
-    },
+    }
   ],
   "itemsList": 
   [
@@ -125,5 +124,12 @@
         }
       ]
     }
-  ]
+  ],
+  "currentScene":0,
+  "LastScene":0,
+  "lastPosition": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+    }
 }
