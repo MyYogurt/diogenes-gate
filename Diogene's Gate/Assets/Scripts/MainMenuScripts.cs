@@ -13,13 +13,13 @@ public class MainMenuScripts : MonoBehaviour
         GameController newgame = GameController.getInstance();
 
         // then load town with the scene change
-        SceneManager.LoadScene("Ingame_Menu");
+        SceneManager.LoadScene("town");
     }
 
     public void loadGame()
     {
         GameController newgame = GameController.loadInstance();
-        SceneManager.LoadScene("Ingame_Menu");
+        //SceneManager.LoadScene("town");
         //need to figure out instance
     }
 
