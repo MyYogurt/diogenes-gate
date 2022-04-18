@@ -8,7 +8,7 @@ public class GameController
     private static GameController gameInstance;
     public playerStorage playerDetails;
     public worldStorage worldDetails;
-    public string currentScene;
+
 
     private GameController()
     {

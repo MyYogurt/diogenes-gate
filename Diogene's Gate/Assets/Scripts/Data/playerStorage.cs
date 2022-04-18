@@ -55,6 +55,15 @@ public class playerStorage
         }
         return null;
     }
+    public int pcIndex(string i)
+    {
+        int find = Party.FindIndex(x => x.pcName == i);
+        if (find != -1)
+        {
+            return find;
+        }
+        return -1;
+    }
 
 
 
@@ -65,7 +74,7 @@ public class playerStorage
         {
             return;
         }
-        Debug.Log(item.itemName);
+        
         itemObject find = inventory.FirstOrDefault(x => x.itemName == item.itemName);
         if (find!=null)
         {

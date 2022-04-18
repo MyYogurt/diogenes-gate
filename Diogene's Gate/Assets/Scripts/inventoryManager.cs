@@ -7,7 +7,7 @@ using TMPro;
 
 public class inventoryManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is acalled before the first frame update
     public int window;
     public int selected;
     public int item;
@@ -16,11 +16,22 @@ public class inventoryManager : MonoBehaviour
 
     void Start()
     {
-        selected = -1;
+        selected = 0;
         window = 0;
         partyWindow = GameObject.Find("party");
         inventoryWindow = GameObject.Find("inventory");
         setParty();      
+    }
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Return))
+        {
+            GameController curr = GameController.getInstance();
+            curr.worldDetails.currentScene = curr.worldDetails.lastScene;
+            curr.worldDetails.lastScene = curr.worldDetails.currentScene;
+            SceneManager.LoadScene(curr.worldDetails.currentScene);
+           
+        }
     }
 
     public void setParty()
@@ -48,13 +59,29 @@ public class inventoryManager : MonoBehaviour
         if(selected!=-1)
         {
             originalGameObject = GameObject.Find("charDesc");
+            GameObject child = originalGameObject.transform.Find("Dropdown").gameObject;
+            child.GetComponentInChildren<TMP_Dropdown>().ClearOptions();
+            int f = 0;
+            List<string> L = new List<string>();
+            while (f < 6)
+            {
+                pcObject pc = curr.playerDetails.partyMem(f);
+                if (pc != null)
+                {
+                    string cha = pc.pcName;
+                    L.Add(cha);
+                }
+                f++;
+            }
+            child.GetComponentInChildren<TMP_Dropdown>().AddOptions(L);
+
             pcObject temp = curr.playerDetails.partyMem(selected);
             if (temp != null)
             {
                 string output = "Class:" + "\nName: " + temp.pcName + "\nDefense: " + temp.dodge + "\nHealth: " + +temp.healthLeft + "/"+temp.health + "\nMana:" +temp.manaLeft+"/"+ temp.mana;
                 originalGameObject.GetComponentInChildren<TextMeshProUGUI>().text = output;
 
-                GameObject child = originalGameObject.transform.Find("helm").gameObject;
+                child = originalGameObject.transform.Find("helm").gameObject;
                 if (temp.armor[1] != null)
                 {
                     child.GetComponentInChildren<TextMeshProUGUI>().text = temp.armor[1].itemName;
@@ -94,7 +121,7 @@ public class inventoryManager : MonoBehaviour
 
         GameObject originalGameObject = GameObject.Find("inventory");
         int j = 0;
-        while (j < 7)
+        while (j < 42)
         {
             itemObject temp = curr.playerDetails.invMem(j);
             GameObject child = originalGameObject.transform.Find("slots").transform.GetChild(j).gameObject;
@@ -121,21 +148,32 @@ public class inventoryManager : MonoBehaviour
 
     public void onSwapClick(int a)
     {
-        window = a;
         GameController curr = GameController.getInstance();
 
-        if (window == 1)
+        if (a == 1)
         {
+           window = a;
            partyWindow.SetActive(false);
            inventoryWindow.SetActive(true);
            setInven();
         }
-        else
+        else if(a == 0)
         {
-
+            window = a;
             partyWindow.SetActive(true);
             inventoryWindow.SetActive(false);
             setParty();
+        }
+        else if (a == 2)
+        {
+            string potion = JsonUtility.ToJson(curr.playerDetails);
+            System.IO.File.WriteAllText("Assets/Scripts/Data/json/loadParty.txt", potion);
+            potion = JsonUtility.ToJson(curr.worldDetails);
+            System.IO.File.WriteAllText("Assets/Scripts/Data/json/loadWorld.txt", potion);
+        }
+        else
+        {
+            SceneManager.LoadScene("Main_Menu");
         }
  
     }
@@ -225,20 +263,23 @@ public class inventoryManager : MonoBehaviour
         pcObject selectedPC = curr.playerDetails.partyMem(child.GetComponentInChildren<TextMeshProUGUI>().text);
         if (a==0)
         {
+            Debug.Log(currItem.number);
             if (currItem.type == 0)     //damage
             {
                 if (selectedPC.armor[0]!=null)
                 {
                     curr.playerDetails.addItem(selectedPC.armor[0]);
+                    Debug.Log(currItem.number);
                 }
                 selectedPC.armor[0] = currItem;
                 curr.playerDetails.removeItem(currItem);
+                Debug.Log(currItem.number);
             }
             else if (currItem.type == 1)//head
             {
                 if (selectedPC.armor[1] != null)
                 {
-                    curr.playerDetails.addItem(selectedPC.armor[0]);
+                    curr.playerDetails.addItem(selectedPC.armor[1]);
                 }
                 selectedPC.armor[1] = currItem;
                 curr.playerDetails.removeItem(currItem);
@@ -247,7 +288,7 @@ public class inventoryManager : MonoBehaviour
             {
                 if (selectedPC.armor[2] != null)
                 {
-                    curr.playerDetails.addItem(selectedPC.armor[0]);
+                    curr.playerDetails.addItem(selectedPC.armor[2]);
                 }
                 selectedPC.armor[2] = currItem;
                 curr.playerDetails.removeItem(currItem);
@@ -277,4 +318,16 @@ public class inventoryManager : MonoBehaviour
         setInven();
     }
 
+    public void onCharSwapClick()
+    {
+        GameObject originalGameObject = GameObject.Find("party").transform.Find("charDesc").gameObject;
+        GameObject child = originalGameObject.transform.Find("Dropdown").transform.Find("Label").gameObject;
+
+        GameController curr = GameController.getInstance();
+        pcObject selectedPC = curr.playerDetails.partyMem(child.GetComponentInChildren<TextMeshProUGUI>().text);
+        int i;
+        i = curr.playerDetails.pcIndex(selectedPC.pcName);
+        curr.playerDetails.swapParty(i, selected);
+        setParty();
+    }
 }

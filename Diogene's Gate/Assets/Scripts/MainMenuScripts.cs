@@ -13,12 +13,16 @@ public class MainMenuScripts : MonoBehaviour
         GameController newgame = GameController.getInstance();
 
         // then load town with the scene change
+        newgame.worldDetails.lastScene = 0;
+        newgame.worldDetails.currentScene = 2;
         SceneManager.LoadScene("town");
+        newgame.worldDetails.lastPosition = new Vector3(389.49f, -35.89f, 0);
     }
 
     public void loadGame()
     {
         GameController newgame = GameController.loadInstance();
+        SceneManager.LoadScene(newgame.worldDetails.currentScene);
         //SceneManager.LoadScene("town");
         //need to figure out instance
     }

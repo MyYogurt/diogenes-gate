@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BattleController.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\changeMap.cs" />
     <Compile Include="Assets\Scripts\Data\interactables\chest.cs" />
     <Compile Include="Assets\Scripts\Data\Items\itemObject.cs" />
     <Compile Include="Assets\Scripts\Data\Monsters\monsterObject.cs" />
