@@ -26,25 +26,25 @@ public class walker : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && (state==1||state==0))
         {
             Anima.SetBool("w", true);
-            transform.Translate(0, .02f, 0);
+            transform.Translate(0, .06f, 0);
             state = 1;
         }
         else if (Input.GetKey(KeyCode.A) && (state == 2 || state == 0))
         {
             Anima.SetBool("a", true);
-            transform.Translate(-.02f, 0, 0);
+            transform.Translate(-.06f, 0, 0);
             state = 2;
         }
         else if (Input.GetKey(KeyCode.S) && (state == 3 || state == 0))
         {
             Anima.SetBool("s", true);
-            transform.Translate(0, -.02f, 0);
+            transform.Translate(0, -.06f, 0);
             state = 3;
         }
         else if (Input.GetKey(KeyCode.D) && (state == 4 || state == 0))
         {
             Anima.SetBool("d", true);
-            transform.Translate(.02f, 0, 0);
+            transform.Translate(.06f, 0, 0);
             state = 4;
         }
         else
