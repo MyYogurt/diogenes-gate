@@ -11,6 +11,10 @@ public class walker : MonoBehaviour
     float accel;
     int state;
 
+    // Data for enemy encounters
+    public LayerMask enemyLayer;
+    public int encounterCounter;
+
     void Start()
     {
         Anima = GetComponent<Animator>();
@@ -54,6 +58,24 @@ public class walker : MonoBehaviour
             Anima.SetBool("s", false);
             Anima.SetBool("d", false);
             state = 0;
+        }
+
+        CheckForEncounters();
+    }
+
+    private void CheckForEncounters()
+    {
+        if(Physics2D.OverlapCircle(transform.position, 0.2f, enemyLayer) != null)
+        {
+            if(Random.Range(1, 801) <= 10)
+            {
+                encounterCounter = encounterCounter + 1;
+                if(encounterCounter >= 4)
+                {
+                    Debug.Log("Encountered an enemy, beging battle phase");
+                    encounterCounter = 0;
+                }
+            }
         }
     }
 }
