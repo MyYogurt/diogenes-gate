@@ -17,10 +17,20 @@ public class walker : MonoBehaviour
 
     void Start()
     {
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene ();
+ 
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
         Anima = GetComponent<Animator>();
         state = 0;
         GameController curr = GameController.getInstance();
         transform.position = curr.worldDetails.lastPosition;
+        if(sceneName == "town")
+        {
+            transform.position = new Vector3(390, -36, 0);
+        }
     }
 
     // Update is called once per frame

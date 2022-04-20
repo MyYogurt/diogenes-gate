@@ -7308,6 +7308,7 @@ GameObject:
   - component: {fileID: 906944658}
   - component: {fileID: 906944657}
   - component: {fileID: 906944656}
+  - component: {fileID: 906944659}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Player
@@ -7408,6 +7409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4120c1cf4c0f794a8c3b686f3766f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  encounterCounter: 0
 --- !u!70 &906944656
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7461,6 +7466,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &906944659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906944651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4f6e4d344db774681c16f210091d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070038947
 GameObject:
   m_ObjectHideFlags: 0
@@ -19648,7 +19665,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.54039
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
