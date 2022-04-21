@@ -14,6 +14,7 @@ public class walker : MonoBehaviour
     // Data for enemy encounters
     public LayerMask enemyLayer;
     public int encounterCounter;
+    public LayerMask overworldLoad;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class walker : MonoBehaviour
         transform.position = curr.worldDetails.lastPosition;
         if(sceneName == "town")
         {
+            //Debug.Log("ding!");
             transform.position = new Vector3(390, -36, 0);
         }
     }
@@ -71,12 +73,14 @@ public class walker : MonoBehaviour
         }
 
         CheckForEncounters();
+        CheckForNewLoad();
     }
 
     private void CheckForEncounters()
     {
         if(Physics2D.OverlapCircle(transform.position, 0.2f, enemyLayer) != null)
         {
+            Debug.Log("bro cmon");
             if(Random.Range(1, 801) <= 10)
             {
                 encounterCounter = encounterCounter + 1;
@@ -86,6 +90,14 @@ public class walker : MonoBehaviour
                     encounterCounter = 0;
                 }
             }
+        }
+    }
+
+    private void CheckForNewLoad()
+    {
+        if(Physics2D.OverlapCircle(transform.position, 0.2f, overworldLoad) != null)
+        {  
+            Debug.Log("Enc. overworldLoad");
         }
     }
 }
